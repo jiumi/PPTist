@@ -61,7 +61,7 @@ export default () => {
     }, 200)
   }
   
-  // 导出pptist文件（特有 .pptist 后缀文件）
+  // 导出.firm文件（特有 .firm 后缀文件）
   const exportSpecificFile = (_slides: Slide[]) => {
     const json = {
       title: title.value,
@@ -71,7 +71,7 @@ export default () => {
       slides: _slides,
     }
     const blob = new Blob([encrypt(JSON.stringify(json))], { type: '' })
-    saveAs(blob, `${title.value}.pptist`)
+    saveAs(blob, `${title.value}.firm`)
   }
   
   // 导出JSON文件

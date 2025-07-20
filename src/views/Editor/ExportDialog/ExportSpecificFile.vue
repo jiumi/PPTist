@@ -24,11 +24,11 @@
         />
       </div>
       <div class="tip">
-        提示：.pptist 是本应用的特有文件后缀，支持将该类型的文件导入回应用中。
+        提示：.firm 是本应用的特有文件后缀，支持将该类型的文件导入回应用中。
       </div>
     </div>
     <div class="btns">
-      <Button class="btn export" type="primary" @click="exportSpecificFile(selectedSlides)">导出 .pptist 文件</Button>
+      <Button class="btn export" type="primary" @click="exportSpecificFile(selectedSlides)">导出 .firm 文件</Button>
       <Button class="btn close" @click="emit('close')">关闭</Button>
     </div>
   </div>

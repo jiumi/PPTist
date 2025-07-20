@@ -1,8 +1,9 @@
 import axios from './config'
+import {Tool} from "@firmer/mesh";
 
 // export const SERVER_URL = 'http://localhost:5000'
-export const SERVER_URL = (import.meta.env.MODE === 'development') ? '/api' : 'https://server.pptist.cn'
-export const ASSET_URL = 'https://asset.pptist.cn'
+export const SERVER_URL = `${Tool.MESH_ADDRESS.get().any()}/mpc/webx`
+export const ASSET_URL = 'https://ai.firmer.tech'
 
 interface AIPPTOutlinePayload {
   content: string
@@ -36,7 +37,7 @@ export default {
     language,
     model,
   }: AIPPTOutlinePayload): Promise<any> {
-    return fetch(`${SERVER_URL}/tools/aippt_outline`, {
+    return fetch(`${SERVER_URL}/pptx/outline`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

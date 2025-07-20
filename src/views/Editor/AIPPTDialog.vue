@@ -1,7 +1,7 @@
 <template>
   <div class="aippt-dialog">
     <div class="header">
-      <span class="title">AIPPT</span>
+      <span class="title">AI续写</span>
       <span class="subtite" v-if="step === 'template'">从下方挑选合适的模板，开始生成PPT</span>
       <span class="subtite" v-else-if="step === 'outline'">确认下方内容大纲（点击编辑内容，右键添加/删除大纲项），开始选择模板</span>
       <span class="subtite" v-else>在下方输入您的PPT主题，并适当补充信息，如行业、岗位、学科、用途等</span>

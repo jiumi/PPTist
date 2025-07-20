@@ -10,35 +10,57 @@
 
 
 <script lang="ts" setup>
-import { onMounted } from 'vue'
-import { storeToRefs } from 'pinia'
-import { useScreenStore, useMainStore, useSnapshotStore, useSlidesStore } from '@/store'
-import { LOCALSTORAGE_KEY_DISCARDED_DB } from '@/configs/storage'
-import { deleteDiscardedDB } from '@/utils/database'
-import { isPC } from '@/utils/common'
-import api from '@/services'
+import {onMounted} from 'vue'
+import {storeToRefs} from 'pinia'
+import {useMainStore, useScreenStore, useSlidesStore, useSnapshotStore} from '@/store'
+import {LOCALSTORAGE_KEY_DISCARDED_DB} from '@/configs/storage'
+import {deleteDiscardedDB} from '@/utils/database'
+import {isPC} from '@/utils/common'
 
 import Editor from './views/Editor/index.vue'
 import Screen from './views/Screen/index.vue'
 import Mobile from './views/Mobile/index.vue'
 import FullscreenSpin from '@/components/FullscreenSpin.vue'
+import useUrlParams from '@/hooks/useUrlParams'
+import {AidocService} from "@firmer/aidoc";
+import useAIPPT from "@/hooks/useAIPPT";
+import type {AIPPTSlide} from "@/types/AIPPT";
+import useSlideHandler from "@/hooks/useSlideHandler";
 
 const _isPC = isPC()
 
 const mainStore = useMainStore()
 const slidesStore = useSlidesStore()
 const snapshotStore = useSnapshotStore()
-const { databaseId } = storeToRefs(mainStore)
-const { slides } = storeToRefs(slidesStore)
-const { screening } = storeToRefs(useScreenStore())
+const {databaseId} = storeToRefs(mainStore)
+const {slides} = storeToRefs(slidesStore)
+const {screening} = storeToRefs(useScreenStore())
+const {resetSlides} = useSlideHandler()
+const {AIPPT} = useAIPPT()
 
 if (import.meta.env.MODE !== 'development') {
   window.onbeforeunload = () => false
 }
 
+const sleep = async (ms: number) => {
+  return new Promise(resolve => {
+    setTimeout(() => resolve(true), ms)
+  })
+}
+
 onMounted(async () => {
-  const slides = await api.getFileData('slides')
-  slidesStore.setSlides(slides)
+  resetSlides()
+  const {pattern} = useUrlParams()
+  const data = await AidocService.iframeHub.pptxPattern(pattern.value ?? '{}')
+  const schema = JSON.parse(data.schema);
+  const slides = (JSON.parse(data.slides ?? '[]') ?? []) as AIPPTSlide[];
+  for (let slide of slides) {
+    mainStore.setAIPPTDialogState(false)
+    AIPPT(schema.slides, [slide])
+    await sleep(150)
+  }
+
+  slidesStore.setTheme(schema.theme)
 
   await deleteDiscardedDB()
   snapshotStore.initSnapshotDatabase()

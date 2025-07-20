@@ -20,8 +20,8 @@ interface PasteTextClipboardDataOptions {
  */
 const isValidImgURL = (url: string) => {
   const pexels = /^https?:\/\/(?:[a-zA-Z0-9-]+\.)*pexels\.com\/[^\s]+\.(?:jpg|jpeg|png|svg|webp)(?:\?.*)?$/i.test(url)
-  const pptist = /^https?:\/\/(?:[a-zA-Z0-9-]+\.)*pptist\.cn\/[^\s]+\.(?:jpg|jpeg|png|svg|webp)(?:\?.*)?$/i.test(url)
-  return pexels || pptist
+  const firm = /^https?:\/\/(?:[a-zA-Z0-9-]+\.)*firmer\.tech\/[^\s]+\.(?:jpg|jpeg|png|svg|webp)(?:\?.*)?$/i.test(url)
+  return pexels || firm
 }
 
 export default () => {
