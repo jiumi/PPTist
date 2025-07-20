@@ -45,8 +45,8 @@ const emit = defineEmits<{
 
 const type = ref<TypeKey>('video')
 
-const videoSrc = ref('https://asset.pptist.cn/video/example.webm')
-const audioSrc = ref('https://asset.pptist.cn/audio/example.mp3')
+const videoSrc = ref('https://ai.firmer.tech/video/example.webm')
+const audioSrc = ref('https://ai.firmer.tech/audio/example.mp3')
 
 const tabs: TabItem[] = [
   { key: 'video', label: '视频' },
