@@ -76,6 +76,7 @@
     "sass": "^1.69.6",
     "typescript": "~5.8.3",
     "vite": "^6.3.5",
+    "vite-plugin-clean": "^2.0.1",
     "vue-tsc": "^2.0.29"
   },
   "packageManager": "yarn@4.9.2"

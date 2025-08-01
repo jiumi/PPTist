@@ -4783,6 +4783,7 @@ __metadata:
     tippy.js: "npm:^6.3.7"
     typescript: "npm:~5.8.3"
     vite: "npm:^6.3.5"
+    vite-plugin-clean: "npm:^2.0.1"
     vue: "npm:^3.5.17"
     vue-tsc: "npm:^2.0.29"
     vuedraggable: "npm:^4.1.0"
@@ -6067,6 +6068,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"vite-plugin-clean@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "vite-plugin-clean@npm:2.0.1"
+  dependencies:
+    "@rollup/pluginutils": "npm:^5.1.4"
+    vite: "npm:^6.1.0"
+  checksum: 10c0/155439114e491f104b1fc4fd21bcf334a37cf97053c8529ff8513132984efa884a8070f5d82558d8f29ab1a2010fae9b34948ff74f9c7c96e9af3ce4f080a981
+  languageName: node
+  linkType: hard
+
 "vite-plugin-dts@npm:^4.5.4":
   version: 4.5.4
   resolution: "vite-plugin-dts@npm:4.5.4"
@@ -6145,7 +6156,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^6.3.5":
+"vite@npm:^6.1.0, vite@npm:^6.3.5":
   version: 6.3.5
   resolution: "vite@npm:6.3.5"
   dependencies:
