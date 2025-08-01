@@ -276,8 +276,8 @@
           </div>
 
           <div class="btns">
-            <Button type="primary" size="small" @click="applyPresetTheme(item)">设置后续预设主题</Button>
-            <Button type="primary" size="small" style="margin-top: 3px;" @click="applyPresetTheme(item, true)">设置并应用到全部</Button>
+            <Button type="primary" size="small" @click="applyPresetTheme(item)">设置后续主题</Button>
+            <Button type="primary" size="small" style="margin-top: 3px;" @click="applyPresetTheme(item, true)">应用到全部</Button>
           </div>
         </div>
       </div>
