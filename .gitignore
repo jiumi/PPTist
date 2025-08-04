@@ -28,3 +28,8 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+
+**/.yarn/cache
+**/.yarn/install-state.gz
+**/.yarn/sdks
+**/.yarn/unplugged
